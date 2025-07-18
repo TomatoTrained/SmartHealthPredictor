@@ -3,6 +3,5 @@ pandas==2.2.3
 numpy==2.2.3
 sqlalchemy==2.0.38
 python-dotenv==1.0.1
-psycopg2-binary==2.9.10  # Only if using PostgreSQL
-Pillow==10.1.0  # Only if handling images
-scikit-learn==1.6.1  # Only if doing ML
+psycopg2-binary==2.9.10
+Pillow==10.2.0  # Updated version that works with Python 3.13
