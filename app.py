@@ -1,3 +1,7 @@
+from utils.database import Base, engine, init_db
+
+# Initialize database - this will create tables if they don't exist
+init_db()
 import streamlit as st
 from utils.auth import init_session_state, login, register, logout
 import streamlit.components.v1 as components
