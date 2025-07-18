@@ -1,0 +1,9 @@
+symptom_1,symptom_2,symptom_3,disease,severity
+fever,cough,fatigue,Common Cold,1
+fever,cough,shortness_of_breath,COVID-19,3
+headache,nausea,sensitivity_to_light,Migraine,2
+chest_pain,shortness_of_breath,dizziness,Heart Disease,4
+abdominal_pain,nausea,vomiting,Gastroenteritis,2
+joint_pain,swelling,stiffness,Arthritis,2
+rash,itching,redness,Allergic Reaction,1
+sore_throat,difficulty_swallowing,swollen_glands,Tonsillitis,2

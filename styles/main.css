@@ -1,0 +1,69 @@
+/* Main styling */
+body {
+    font-family: 'Arial', sans-serif;
+    color: #333333;
+}
+
+/* Headers */
+h1, h2, h3 {
+    color: #0066cc;
+    margin-bottom: 1rem;
+}
+
+/* Cards */
+.card {
+    background: white;
+    border-radius: 10px;
+    padding: 1.5rem;
+    margin: 1rem 0;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* Buttons */
+.stButton button {
+    background-color: #0066cc;
+    color: white;
+    border-radius: 20px;
+    padding: 0.5rem 2rem;
+    border: none;
+    transition: all 0.3s ease;
+}
+
+.stButton button:hover {
+    background-color: #0052a3;
+    transform: translateY(-2px);
+}
+
+/* Form inputs */
+.stTextInput input {
+    border-radius: 5px;
+    border: 1px solid #e0e0e0;
+    padding: 0.5rem;
+}
+
+/* Progress bars */
+.stProgress > div > div {
+    background-color: #0066cc;
+}
+
+/* Alerts */
+.stAlert {
+    border-radius: 10px;
+    padding: 1rem;
+}
+
+/* Doctor profile images */
+.doctor-image {
+    border-radius: 50%;
+    border: 3px solid #0066cc;
+}
+
+/* Facility images */
+.facility-image {
+    border-radius: 10px;
+    transition: transform 0.3s ease;
+}
+
+.facility-image:hover {
+    transform: scale(1.05);
+}

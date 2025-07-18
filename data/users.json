@@ -1,0 +1,41 @@
+{
+    "demo_user": {
+        "password": "demo123",
+        "email": "demo@example.com",
+        "health_records": [
+            {
+                "date": "2023-11-01",
+                "blood_pressure_systolic": 120,
+                "blood_pressure_diastolic": 80,
+                "heart_rate": 75,
+                "weight": 70.5
+            }
+        ]
+    },
+    "john_doe": {
+        "password": "password123",
+        "email": "john@example.com",
+        "health_records": [
+            {
+                "date": "2023-11-01",
+                "blood_pressure_systolic": 118,
+                "blood_pressure_diastolic": 78,
+                "heart_rate": 72,
+                "weight": 68.5
+            }
+        ]
+    },
+    "jane_smith": {
+        "password": "secure456",
+        "email": "jane@example.com",
+        "health_records": [
+            {
+                "date": "2023-11-01",
+                "blood_pressure_systolic": 115,
+                "blood_pressure_diastolic": 75,
+                "heart_rate": 68,
+                "weight": 65.0
+            }
+        ]
+    }
+}

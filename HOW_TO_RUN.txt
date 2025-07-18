@@ -1,0 +1,4 @@
+HOW TO USE:
+1. Double-click RUN_APP.bat
+2. Wait for installations to finish
+3. The app will open automatically in your browser

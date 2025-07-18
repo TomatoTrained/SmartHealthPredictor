@@ -1,0 +1,40 @@
+{
+    "doctors": [
+        {
+            "id": 1,
+            "name": "Dr. Sarah Johnson",
+            "specialty": "General Medicine",
+            "image": "https://images.unsplash.com/photo-1532938911079-1b06ac7ceec7",
+            "rating": 4.8,
+            "experience": 12,
+            "availability": ["Monday", "Wednesday", "Friday"]
+        },
+        {
+            "id": 2,
+            "name": "Dr. Michael Chen",
+            "specialty": "Cardiology",
+            "image": "https://images.unsplash.com/photo-1605684954998-685c79d6a018",
+            "rating": 4.9,
+            "experience": 15,
+            "availability": ["Tuesday", "Thursday", "Saturday"]
+        },
+        {
+            "id": 3,
+            "name": "Dr. Emma Wilson",
+            "specialty": "Neurology",
+            "image": "https://images.unsplash.com/photo-1609188076864-c35269136b09",
+            "rating": 4.7,
+            "experience": 10,
+            "availability": ["Monday", "Tuesday", "Friday"]
+        },
+        {
+            "id": 4,
+            "name": "Dr. James Taylor",
+            "specialty": "Dermatology",
+            "image": "https://images.unsplash.com/photo-1499557354967-2b2d8910bcca",
+            "rating": 4.6,
+            "experience": 8,
+            "availability": ["Wednesday", "Thursday", "Saturday"]
+        }
+    ]
+}
