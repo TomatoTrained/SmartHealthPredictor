@@ -1,17 +1,8 @@
-
-
 import streamlit as st
 from utils.database import init_db
 from utils.auth import init_session_state, login, register, logout, require_auth, get_current_user
 
-# Initialize session state
-if 'authenticated' not in st.session_state:
-    st.session_state.authenticated = False
-if 'is_doctor' not in st.session_state:
-    st.session_state.is_doctor = False
-
-
-# Initialize database and session state
+# Initialize database and session state FIRST
 init_db()
 init_session_state()
 
@@ -41,6 +32,7 @@ st.markdown("""
 
 st.title("HealthCare Prediction System")
 
+# Authentication check moved to the top after initialization
 if not st.session_state.authenticated:
     tab1, tab2 = st.tabs(["Login", "Register"])
 
@@ -70,7 +62,7 @@ if not st.session_state.authenticated:
                 if register(new_username, new_password, email, is_doctor, specialty):
                     st.success("Registration successful! Please login.")
                 else:
-                    st.error("Username already exists")
+                    st.error("Username or email already exists")
 
 else:
     st.write(f"Welcome back, {'Dr. ' if st.session_state.is_doctor else ''}{st.session_state.username}!")
