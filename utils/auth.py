@@ -5,7 +5,7 @@ from passlib.context import CryptContext
 from sqlalchemy.orm import Session
 from typing import Generator
 
-pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
+pwd_context = CryptContext(schemes=["pbkdf2_sha256"], deprecated="auto")
 
 def get_db() -> Generator[Session, None, None]:
     """Get a database session"""
