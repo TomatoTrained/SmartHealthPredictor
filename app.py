@@ -1,6 +1,15 @@
+
+
 import streamlit as st
 from utils.database import init_db
 from utils.auth import init_session_state, login, register, logout, require_auth, get_current_user
+
+# Initialize session state
+if 'authenticated' not in st.session_state:
+    st.session_state.authenticated = False
+if 'is_doctor' not in st.session_state:
+    st.session_state.is_doctor = False
+
 
 # Initialize database and session state
 init_db()
