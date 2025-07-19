@@ -46,9 +46,23 @@ class User(Base):
     updated_at = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
     
     # Relationships
-    health_records = relationship("HealthRecord", back_populates="user", cascade="all, delete-orphan")
-    predictions = relationship("Prediction", back_populates="user", cascade="all, delete-orphan")
-    doctor_assessments = relationship("DoctorAssessment", back_populates="doctor", cascade="all, delete-orphan")
+    health_records = relationship("HealthRecord", 
+                                back_populates="user", 
+                                cascade="all, delete-orphan")
+    
+    patient_predictions = relationship("Prediction", 
+                                     foreign_keys="[Prediction.user_id]",
+                                     back_populates="user",
+                                     cascade="all, delete-orphan")
+    
+    doctor_reviews = relationship("Prediction",
+                                foreign_keys="[Prediction.reviewed_by]",
+                                back_populates="reviewing_doctor")
+    
+    doctor_assessments = relationship("DoctorAssessment", 
+                                    foreign_keys="[DoctorAssessment.doctor_id]",
+                                    back_populates="doctor",
+                                    cascade="all, delete-orphan")
 
     def set_password(self, password: str):
         self.hashed_password = pwd_context.hash(password)
@@ -75,7 +89,9 @@ class HealthRecord(Base):
     bmi = Column(Float)
     
     user = relationship("User", back_populates="health_records")
-    assessments = relationship("DoctorAssessment", back_populates="health_record", cascade="all, delete-orphan")
+    assessments = relationship("DoctorAssessment", 
+                             back_populates="health_record", 
+                             cascade="all, delete-orphan")
 
     def calculate_bmi(self):
         if self.height and self.weight:
@@ -97,8 +113,8 @@ class Prediction(Base):
     reviewed_by = Column(Integer, ForeignKey("users.id"), nullable=True)
     reviewed_at = Column(DateTime, nullable=True)
     
-    user = relationship("User", back_populates="predictions", foreign_keys=[user_id])
-    reviewing_doctor = relationship("User", foreign_keys=[reviewed_by])
+    user = relationship("User", foreign_keys=[user_id], back_populates="patient_predictions")
+    reviewing_doctor = relationship("User", foreign_keys=[reviewed_by], back_populates="doctor_reviews")
 
 class DoctorAssessment(Base):
     __tablename__ = "doctor_assessments"
@@ -113,12 +129,17 @@ class DoctorAssessment(Base):
     prescription = Column(Text, nullable=True)
     prescription_issued = Column(Boolean, default=False)
     
-    doctor = relationship("User", back_populates="doctor_assessments")
-    health_record = relationship("HealthRecord", back_populates="assessments")
+    doctor = relationship("User", foreign_keys=[doctor_id], back_populates="doctor_assessments")
+    health_record = relationship("HealthRecord", foreign_keys=[health_record_id], back_populates="assessments")
+
+def clear_database_sessions():
+    """Clear all database sessions"""
+    SessionLocal.remove()
 
 def init_db():
     """Initialize the database and create tables"""
     try:
+        Base.metadata.drop_all(bind=engine)  # Drop existing tables
         Base.metadata.create_all(bind=engine)
         print("✅ Database tables created successfully")
     except Exception as e:
@@ -132,6 +153,9 @@ def get_db():
         yield db
     finally:
         db.close()
+
+# Register cleanup at exit
+atexit.register(clear_database_sessions)
 
 # Initialize database when module is imported
 init_db()
